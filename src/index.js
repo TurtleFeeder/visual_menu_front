@@ -6,5 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // figure out serialization to link restaurants and meals
   // attach the fetchMeals to a then after the restaurants are created to ensure the restaurants exists prior to creating meals
   app.adapter.fetchMeals().then(app.createMeals);
+  app.adapter.fetchReviews().then(app.createReviews);
 
 }) //end DOMContentLoaded event listener

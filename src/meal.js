@@ -5,6 +5,7 @@ class Meal {
     this.imgurl = data.imgurl;
     this.price = data.price;
     this.restaurant = Restaurant.findById(data.restaurant_id);
+    this.reviews = data.reviews;
     // this.restaurant = data.restaurant_id;
     Meal.all.push(this);
   }

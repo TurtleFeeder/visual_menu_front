@@ -31,6 +31,12 @@ class App {
     });
   } // end createMeals fn
 
+  createReviews(reviews) {
+    reviews.forEach(review => {
+      new Review(review);
+    });
+  } //end of createReviews
+
   handleSideBarClick(e) {
     if (e.target.dataset.id != undefined) {
       const rId = parseInt(e.target.dataset.id);
@@ -38,6 +44,8 @@ class App {
       document.querySelector('.restaurant-info').innerHTML = restaurant.renderInfo();
       console.log(restaurant);
       console.log("serialized meals:", restaurant.meals);
+
+      debugger
     }
   } // end handleSideBarClick fn
 
