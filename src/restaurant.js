@@ -5,6 +5,7 @@ class Restaurant {
     this.hours = data.hours;
     this.location = data.location;
     this.phone = data.phone;
+    this.meals = data.meals;
     Restaurant.all.push(this);
   }
 
@@ -23,12 +24,6 @@ class Restaurant {
     <h5 id="hours">${this.hours}</h5>
     <h5 id="phone">${this.phone}</h5>
     `
-  }
-
-  meals() {
-    //filter through all meals
-    //does meal.restaurant.id == this.id
-    return Meal.all.filter((meal)=> meal.restaurant.id === this.id);
   }
 
 } //end Restaurant class

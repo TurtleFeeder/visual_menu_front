@@ -10,7 +10,7 @@ body {
     top: 0;
     left: 0;
     background-color: #90EE90;
-    overflow-x: hidden;
+    overflow-x: auto;
     padding-top: 20px;
 }
 

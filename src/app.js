@@ -37,7 +37,7 @@ class App {
       const restaurant = Restaurant.findById(rId);
       document.querySelector('.restaurant-info').innerHTML = restaurant.renderInfo();
       console.log(restaurant);
-      console.log("this is the one", restaurant.meals());
+      console.log("serialized meals:", restaurant.meals);
     }
   } // end handleSideBarClick fn
 
