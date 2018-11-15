@@ -15,9 +15,6 @@ class App {
     this.handleNewMenuItemFormSubmit = this.handleNewMenuItemFormSubmit.bind(this);
   }
 
-  // let modal = document.getElementById('myModal');
-  // let span = document.getElementsByClassName("close")[0];
-  // let btn = document.getElementById("myBtn");
 
   attachEventListeners() {
     document.querySelector('.sidenav').addEventListener('click', this.handleSideBarClick);
@@ -55,7 +52,7 @@ class App {
   //     new Meal(meal);
   //   });
   // } // end createMeals fn
-  // 
+  //
   // createReviews(reviews) {
   //   reviews.forEach(review => {
   //     new Review(review);
@@ -134,19 +131,21 @@ class App {
 
   handleNewMenuItemFormSubmit(e){
     e.preventDefault()
-    debugger
+
     let newMenuItemName = e.target.menuitemname.value
     let newMenuItemPrice = e.target.menuitemprice.value
     let newMenuItemDescription = e.target.menuitemdescription.value
     let newMenuItemURL = e.target.menuitemimgurl.value
-    let newMenuResId = e.target.dataset.id
+    let newMenuResId = parseInt(e.target.dataset.id)
+    let restObj = Restaurant.findById(newMenuResId)
     let newMenuitemObject = {name: newMenuItemName, price: newMenuItemPrice, description: newMenuItemDescription, imgurl: newMenuItemURL, restaurant_id: newMenuResId}
-    debugger
+
 
     this.adapter.postMeal(newMenuitemObject).then((newMenuitem)=> {
-      newMenuitemObject = new Restaurant(newMenuitem)
+      newMenuitemObject = new Meal(newMenuitem, restObj)
     document.getElementById('myMenuItemModal').style.display = "none";
-    document.querySelector('#menu-list').innerHTML += newMenuitemObject.renderMEalLi()
+    document.querySelector('#menu-list').innerHTML += newMenuitemObject.renderMLi()
+
     })
   }
 
