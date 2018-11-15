@@ -12,11 +12,14 @@ class Meal {
   }
 
   renderMLi() {
-    return `<li data-id="${this.id}">${this.name}</li>`;
+    return `<li data-id="${this.id}" class="tablinks">${this.name}</li>`;
   } // end renderMLi fn
 
   renderMealCard() {
-    return ``
+    return `  <img src="${this.imgurl}" style="width:70vh;height:40vh;">
+              <h3>${this.name}</h3>
+              <h5>Price: ${this.price}</h5>
+              <p>${this.description}</p>`
   } // end renderMealCard fn
 
   static renderRMeals(array) {

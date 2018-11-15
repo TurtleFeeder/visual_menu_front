@@ -5,12 +5,12 @@ class App {
     this.createRestaurants = this.createRestaurants.bind(this);
     this.addRestaurants = this.addRestaurants.bind(this);
     this.handleSideBarClick = this.handleSideBarClick.bind(this);
-    // this.handleMenuDivHover = this.handleMenuDivHover.bind(this);
+    this.handleMenuDivHover = this.handleMenuDivHover.bind(this);
   }
 
   attachEventListeners() {
     document.querySelector('.sidenav').addEventListener('click', this.handleSideBarClick);
-    // document.querySelector('.menu').addEventListener('click', this.handleMenuDivHover);
+    document.querySelector('.menu').addEventListener('mouseover', this.handleMenuDivHover);
   }
 
   createRestaurants(restaurants) {
@@ -43,12 +43,15 @@ class App {
     }
   } // end handleSideBarClick fn
 
-  // handleMenuDivHover(e) {
-  //   if (e.target.dataset.id != undefined) {
-  //     const mId = parseInt(e.target.dataset.id);
-  //     const meal = Meal.findById(rId);
-  //     document.querySelector('.menu').innerHTML = meal.renderMealCard();
-  //   }
-  // } // end handleSideBarClick fn
+  handleMenuDivHover(e) {
+    console.log(e.target)
+    if (e.target.dataset.id != undefined) {
+      console.log('in the if stmt!')
+      const mId = parseInt(e.target.dataset.id);
+      const meal = Meal.findByMId(mId);
+      console.log(meal.imgurl)
+      document.querySelector('#menu-card').innerHTML = meal.renderMealCard();
+    }
+  } // end handleSideBarClick fn
 
 } // end App class
