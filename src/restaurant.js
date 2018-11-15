@@ -26,6 +26,10 @@ class Restaurant {
     <h4 id="location">${this.location}</h4>
     <h5 id="hours">${this.hours}</h5>
     <h5 id="phone">${this.phone}</h5>
+    <div align="right">
+    <button class="button addMenuItem" data-id=${this.id}>Add Menu Item</button>
+    </div>
+    <br>
     `
   }
 

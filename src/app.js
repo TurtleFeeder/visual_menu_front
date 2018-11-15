@@ -9,6 +9,10 @@ class App {
     this.handleNewRestaurantFormClick = this.handleNewRestaurantFormClick.bind(this);
     this.handleSpanClick = this.handleSpanClick.bind(this);
     this.handleClickOutsideForm = this.handleClickOutsideForm.bind(this);
+    this.handleNewMenuItemClick = this.handleNewMenuItemClick.bind(this);
+    this.handleSpanClickMenuItemModal = this.handleSpanClickMenuItemModal.bind(this);
+    this.handleClickOutsideMenuItemForm = this.handleClickOutsideMenuItemForm.bind(this);
+    this.handleNewMenuItemFormSubmit = this.handleNewMenuItemFormSubmit.bind(this);
   }
 
   // let modal = document.getElementById('myModal');
@@ -24,6 +28,10 @@ class App {
     document.querySelector('.new-restaurant-form').addEventListener('submit',this.handleNewRestaurantFormClick)
     document.getElementsByClassName("close")[0].addEventListener('click', this.handleSpanClick);
     window.addEventListener('click', this.handleClickOutsideForm);
+    document.querySelector('.restaurant-info').addEventListener('click',this.handleNewMenuItemClick)
+    document.getElementsByClassName("close")[1].addEventListener('click', this.handleSpanClickMenuItemModal);
+    window.addEventListener('click', this.handleClickOutsideMenuItemForm);
+    document.querySelector('.new-menu-item-form').addEventListener('submit',this.handleNewMenuItemFormSubmit)
 
   }
 
@@ -54,8 +62,6 @@ class App {
   //   });
   // } //end of createReviews
 
-
-
   handleSideBarClick(e) {
     if (e.target.dataset.id != undefined) {
       const rId = parseInt(e.target.dataset.id);
@@ -69,7 +75,7 @@ class App {
       modal.style.display = "block";
 
 
-    }//create restaurant button
+    }//if create restaurant button is clicked display modal
   } // end handleSideBarClick fn
 
   handleMenuDivHover(e) {
@@ -86,24 +92,63 @@ class App {
     let newResHours = e.target.restauranthours.value
     let newResLocation = e.target.restaurantlocation.value
     let newResPhone = e.target.restaurantphone.value
-    debugger
-    this.adapter.post()
+    let newResObject = {name: newResName, hours: newResHours, location: newResLocation, phone: newResPhone}
+
+    this.adapter.postRestaurant(newResObject).then((newRes)=> {
+      newResObject = new Restaurant(newRes)
+    document.getElementById('myModal').style.display = "none";
+    document.querySelector('#restaurant-list').innerHTML += newResObject.renderLi()
+    })
 
   }
 
   handleSpanClick(e){
     document.getElementById('myModal').style.display = "none";
-  } // When the user clicks on <span> (x), close the modal
+  } // When the user clicks on <span> (x), close the modal for new Restaurant Form
 
   handleClickOutsideForm(e){
     if (e.target == document.getElementById('myModal')) {
           document.getElementById('myModal').style.display = "none";
     }
-  }// When the user clicks anywhere outside of the modal, close it
-  // window.onclick = function(event) {
-  //   if (event.target == modal) {
-  //       modal.style.display = "none";
-  //   }
-  // } // When the user clicks anywhere outside of the modal, close it
+  }// When the user clicks anywhere outside of the modal, close it for new Restaurant Form
+
+  handleNewMenuItemClick(e){
+    if (e.target.className == "button addMenuItem"){
+      let newMenuItemForm = document.querySelector(".new-menu-item-form");
+      let menuItemModal = document.getElementById('myMenuItemModal');
+      let restId = e.target.dataset.id
+      newMenuItemForm.dataset.id = restId
+      menuItemModal.style.display = "block";
+    }
+  }///displays new menu form modal
+
+  handleSpanClickMenuItemModal(e){
+    document.getElementById('myMenuItemModal').style.display = "none";
+  } // When the user clicks on <span> (x), close the modal for new Menu Item Form
+
+  handleClickOutsideMenuItemForm(e){
+    if (e.target == document.getElementById('myMenuItemModal')) {
+          document.getElementById('myMenuItemModal').style.display = "none";
+    }
+  }// When the user clicks anywhere outside of the modal, close it--- for new Menu form
+
+  handleNewMenuItemFormSubmit(e){
+    e.preventDefault()
+    debugger
+    let newMenuItemName = e.target.menuitemname.value
+    let newMenuItemPrice = e.target.menuitemprice.value
+    let newMenuItemDescription = e.target.menuitemdescription.value
+    let newMenuItemURL = e.target.menuitemimgurl.value
+    let newMenuResId = e.target.dataset.id
+    let newMenuitemObject = {name: newMenuItemName, price: newMenuItemPrice, description: newMenuItemDescription, imgurl: newMenuItemURL, restaurant_id: newMenuResId}
+    debugger
+
+    this.adapter.postMeal(newMenuitemObject).then((newMenuitem)=> {
+      newMenuitemObject = new Restaurant(newMenuitem)
+    document.getElementById('myMenuItemModal').style.display = "none";
+    document.querySelector('#menu-list').innerHTML += newMenuitemObject.renderMEalLi()
+    })
+  }
+
 
 } // end App class

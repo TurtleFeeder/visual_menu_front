@@ -23,13 +23,13 @@
 
     <!-- page content -->
     <div class="main">
-      <!-- The Modal -->
+      <!-- The New Restaurant Modal -->
           <div id="myModal" class="modal">
-            <!-- Modal content -->
+
+            <!-- New Restaurant Modal content -->
             <div class="modal-content">
               <span class="close">&times;</span>
-              <p>Please Enter Restaurant Information</p>
-              <form class="new-restaurant-form" method="post">
+              <form class="new-restaurant-form" method="post" data-id="">
                 <fieldset>
                   <legend>New Restaurant information:</legend>
                   Name:<br>
@@ -45,6 +45,30 @@
               </form>
             </div>
           </div>
+
+          <!-- The New Menu Item Modal -->
+              <div id="myMenuItemModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <form class="new-menu-item-form" data-id="" method="post">
+                    <fieldset>
+                      <legend>New Menu item:</legend>
+                      Name:<br>
+                      <input type="text" name="menuitemname" value="Food"><br>
+                      Price:<br>
+                      <input type="text" name="menuitemprice" value=10 ><br>
+                      Description:<br>
+                      <input type="text" name="menuitemdescription" value="Description"><br>
+                      Image URL:<br>
+                      <input type="text" name="menuitemimgurl" value="http://loremflickr.com/300/300/meal"><br><br>
+                      <input type="submit" value="Submit">
+                    </fieldset>
+                  </form>
+                </div>
+
+              </div>
 
       <div class="restaurant-info">
 

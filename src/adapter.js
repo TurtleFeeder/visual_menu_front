@@ -35,4 +35,10 @@ class Adapter {
     return this.post(`${this.baseUrl}/restaurants`, body);
   } // end postRestaurant fn
 
+  postMeal(body){
+    return this.post(`${this.baseUrl}/meals`, body);
+  }
+
+
+
 } //end Adapter class
