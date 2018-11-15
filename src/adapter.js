@@ -19,7 +19,6 @@ class Adapter {
       return this.get(`${this.baseUrl}/reviews`);
   } //end fetchRestaurants fn
 
-
   get(url) {
     return fetch(url).then(res => res.json());
   } // end get helper fn
@@ -32,5 +31,8 @@ class Adapter {
     }).then(res => res.json());
   } // end post helper fn
 
+  postRestaurant(body){
+    return this.post(`${this.baseUrl}/restaurants`, body);
+  } // end postRestaurant fn
 
 } //end Adapter class
