@@ -5,6 +5,7 @@ class Review {
     this.content = data.content;
     this.ratind= data.rating;
     this.meal = Meal.findById(data.meal_id);
+    this.restaurant = restObj;
     Review.all.push(this);
   }
 

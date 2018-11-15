@@ -5,7 +5,10 @@ class Restaurant {
     this.hours = data.hours;
     this.location = data.location;
     this.phone = data.phone;
-    this.meals = data.meals;
+    // debugger
+    this.meals = data.meals.map((m) => new Meal(m, this));
+    //this.meals = data.meals.map((meal) => new Meal(meal));
+    //this.meal = data.meals;
     Restaurant.all.push(this);
   }
 

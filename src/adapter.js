@@ -13,7 +13,7 @@ class Adapter {
 
   fetchMeals() {
       return this.get(`${this.baseUrl}/meals`);
-  } //end fetchRestaurants fn
+  } //end fetchMeals fn
 
   fetchReviews() {
       return this.get(`${this.baseUrl}/reviews`);
