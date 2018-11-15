@@ -78,6 +78,10 @@ body {
 .rev li h4 { margin: 0}
 .rev li footer { margin: 0}
 
+.checked {
+    color: orange;
+}
+
 /* MENU HOVER TAB CSS */
 
 * {box-sizing: border-box}
