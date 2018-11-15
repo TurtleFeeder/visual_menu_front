@@ -55,12 +55,12 @@ class App {
   //     new Meal(meal);
   //   });
   // } // end createMeals fn
-
-  createReviews(reviews) {
-    reviews.forEach(review => {
-      new Review(review);
-    });
-  } //end of createReviews
+  // 
+  // createReviews(reviews) {
+  //   reviews.forEach(review => {
+  //     new Review(review);
+  //   });
+  // } //end of createReviews
 
   handleSideBarClick(e) {
     if (e.target.dataset.id != undefined) {
@@ -79,12 +79,9 @@ class App {
   } // end handleSideBarClick fn
 
   handleMenuDivHover(e) {
-    console.log(e.target)
     if (e.target.dataset.id != undefined) {
-      console.log('in the if stmt!')
       const mId = parseInt(e.target.dataset.id);
       const meal = Meal.findByMId(mId);
-      console.log(meal.imgurl)
       document.querySelector('#menu-card').innerHTML = meal.renderMealCard();
     }
   } // end handleSideBarClick fn
