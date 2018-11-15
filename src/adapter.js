@@ -15,6 +15,11 @@ class Adapter {
       return this.get(`${this.baseUrl}/meals`);
   } //end fetchMeals fn
 
+  fetchReviews() {
+      return this.get(`${this.baseUrl}/reviews`);
+  } //end fetchRestaurants fn
+
+
   get(url) {
     return fetch(url).then(res => res.json());
   } // end get helper fn

@@ -16,10 +16,35 @@
       <h2>Restaurants</h2>
       <ul id="restaurant-list">
       </ul>
+      <button id="myBtn">Create Restaurant</button>
     </div>
 
     <!-- page content -->
     <div class="main">
+      <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Please Enter Restaurant Information</p>
+              <form class="new-restaurant-form" method="post">
+                <fieldset>
+                  <legend>New Restaurant information:</legend>
+                  Name:<br>
+                  <input type="text" name="restaurantname" value="Restaurant Name"><br>
+                  Hours:<br>
+                  <input type="text" name="restauranthours" value="8AM-10PM"><br>
+                  Location:<br>
+                  <input type="text" name="restaurantlocation" value="Address"><br>
+                  Phone Number:<br>
+                  <input type="text" name="restaurantphone" value="(888)-888-8888"><br><br>
+                  <input type="submit" value="Submit">
+                </fieldset>
+              </form>
+            </div>
+
+          </div>
       <div class="restaurant-info">
 
       </div>
