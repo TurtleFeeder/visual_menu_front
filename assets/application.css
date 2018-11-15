@@ -57,12 +57,16 @@ body {
     float: left;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-    width: 30%;
-    height: 300px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    /* min-height: 100vh; */
+    height: 100vh;
+    overflow-x: scroll;
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.tab li {
     display: block;
     background-color: inherit;
     color: black;
@@ -76,12 +80,12 @@ body {
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
+.tab li:hover {
     background-color: #ddd;
 }
 
-/* Create an active/current "tab button" class */
-.tab button.active {
+/* Create an active/current "tab li" class */
+.tab li.active {
     background-color: #ccc;
 }
 
@@ -90,10 +94,13 @@ body {
     float: left;
     padding: 0px 12px;
     border: 1px solid #ccc;
-    width: 70%;
-    border-left: none;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* border-left: none;
     height: 300px;
-    display: none;
+    display: none; */
 }
 
 /* Clear floats after the tab */
