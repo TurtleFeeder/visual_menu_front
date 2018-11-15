@@ -5,9 +5,9 @@ class Meal {
     this.description = data.description;
     this.imgurl = data.imgurl;
     this.price = data.price;
+    this.reviews = data.reviews.map((r) => new Review(r, this));
     this.restaurant = restObj;
-    // this.restaurant.meals.push(this)
-    // this.restaurant = data.restaurant_id;
+
     Meal.all.push(this);
   }
 
@@ -19,7 +19,13 @@ class Meal {
     return `  <img src="${this.imgurl}" style="width:70vh;height:40vh;">
               <h3>${this.name}</h3>
               <h5>Price: ${this.price}</h5>
-              <p>${this.description}</p>`
+              <p>${this.description}</p>
+              <div class="rev">
+                <ul id="menu-reviews">
+                ${Review.renderRevs(this.reviews)}
+                </ul>
+              </div>
+              `
   } // end renderMealCard fn
 
   static renderRMeals(array) {
