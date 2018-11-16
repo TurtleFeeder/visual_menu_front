@@ -13,15 +13,12 @@ class App {
     this.handleSpanClickMenuItemModal = this.handleSpanClickMenuItemModal.bind(this);
     this.handleClickOutsideMenuItemForm = this.handleClickOutsideMenuItemForm.bind(this);
     this.handleNewMenuItemFormSubmit = this.handleNewMenuItemFormSubmit.bind(this);
-  }
+  } //end App constructor fn
 
 
   attachEventListeners() {
     document.querySelector('.sidenav').addEventListener('click', this.handleSideBarClick);
-
-
     document.querySelector('.menu').addEventListener('mouseover', this.handleMenuDivHover);
-
     document.querySelector('.new-restaurant-form').addEventListener('submit',this.handleNewRestaurantFormClick)
     document.getElementsByClassName("close")[0].addEventListener('click', this.handleSpanClick);
     window.addEventListener('click', this.handleClickOutsideForm);
@@ -29,8 +26,7 @@ class App {
     document.getElementsByClassName("close")[1].addEventListener('click', this.handleSpanClickMenuItemModal);
     window.addEventListener('click', this.handleClickOutsideMenuItemForm);
     document.querySelector('.new-menu-item-form').addEventListener('submit',this.handleNewMenuItemFormSubmit)
-
-  }
+  } // end attachEventListeners fn
 
   createRestaurants(restaurants) {
     restaurants.forEach(restaurant => {
@@ -46,19 +42,6 @@ class App {
     );
   } // end addRestaurants fn
 
-// don't need createMeals fn since the Restaurant constructor will create all the meals that's associated with it.
-  // createMeals(meals) {
-  //   meals.forEach(meal => {
-  //     new Meal(meal);
-  //   });
-  // } // end createMeals fn
-  //
-  // createReviews(reviews) {
-  //   reviews.forEach(review => {
-  //     new Review(review);
-  //   });
-  // } //end of createReviews
-
   handleSideBarClick(e) {
     if (e.target.dataset.id != undefined) {
       const rId = parseInt(e.target.dataset.id);
@@ -70,8 +53,6 @@ class App {
       let span = document.getElementsByClassName("close")[0];
       let btn = document.getElementById("myBtn");
       modal.style.display = "block";
-
-
     }//if create restaurant button is clicked display modal
   } // end handleSideBarClick fn
 
@@ -96,8 +77,7 @@ class App {
     document.getElementById('myModal').style.display = "none";
     document.querySelector('#restaurant-list').innerHTML += newResObject.renderLi()
     })
-
-  }
+  } // end handleNewRestaurantFormClick fn
 
   handleSpanClick(e){
     document.getElementById('myModal').style.display = "none";
@@ -107,7 +87,7 @@ class App {
     if (e.target == document.getElementById('myModal')) {
           document.getElementById('myModal').style.display = "none";
     }
-  }// When the user clicks anywhere outside of the modal, close it for new Restaurant Form
+  } // When the user clicks anywhere outside of the modal, close it for new Restaurant Form
 
   handleNewMenuItemClick(e){
     if (e.target.className == "button addMenuItem"){
@@ -117,7 +97,7 @@ class App {
       newMenuItemForm.dataset.id = restId
       menuItemModal.style.display = "block";
     }
-  }///displays new menu form modal
+  } //displays new menu form modal
 
   handleSpanClickMenuItemModal(e){
     document.getElementById('myMenuItemModal').style.display = "none";
@@ -127,7 +107,7 @@ class App {
     if (e.target == document.getElementById('myMenuItemModal')) {
           document.getElementById('myMenuItemModal').style.display = "none";
     }
-  }// When the user clicks anywhere outside of the modal, close it--- for new Menu form
+  } // When the user clicks anywhere outside of the modal, close it--- for new Menu form
 
   handleNewMenuItemFormSubmit(e){
     e.preventDefault()
@@ -140,14 +120,10 @@ class App {
     let restObj = Restaurant.findById(newMenuResId)
     let newMenuitemObject = {name: newMenuItemName, price: newMenuItemPrice, description: newMenuItemDescription, imgurl: newMenuItemURL, restaurant_id: newMenuResId}
 
-
     this.adapter.postMeal(newMenuitemObject).then((newMenuitem)=> {
       newMenuitemObject = new Meal(newMenuitem, restObj)
     document.getElementById('myMenuItemModal').style.display = "none";
-    document.querySelector('#menu-list').innerHTML += newMenuitemObject.renderMLi()
-
+    document.querySelector('#menu-list').innerHTML += newMenuitemObject.renderMLi();
     })
-  }
-
-
+  } // end handleNewMenuItemFormSubmit fn
 } // end App class

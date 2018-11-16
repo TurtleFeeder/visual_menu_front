@@ -5,9 +5,8 @@ class Review {
     this.content = data.content;
     this.rating= data.rating;
     this.meal = mealObj;
-
     Review.all.push(this);
-  }
+  } // end Review constructor fn
 
   static findById(id) {
     return this.all.find(review => review.id === id);

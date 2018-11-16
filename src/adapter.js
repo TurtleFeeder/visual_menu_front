@@ -5,7 +5,7 @@ class Adapter {
       'Content-Type': 'application/json',
       Accept: 'application/json'
     };
-  }
+  } // end Adapter constructor fn
 
   fetchRestaurants() {
       return this.get(`${this.baseUrl}/restaurants`);
@@ -37,8 +37,6 @@ class Adapter {
 
   postMeal(body){
     return this.post(`${this.baseUrl}/meals`, body);
-  }
-
-
+  } // end postMeal fn
 
 } //end Adapter class

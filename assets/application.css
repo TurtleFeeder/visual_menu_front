@@ -36,6 +36,21 @@ body {
     color: #f1f1f1;
 }
 
+.sidenav button {
+    background-color: #90EE90; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.sidenav button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 .main {
     margin-left: 240px; /* Same as the width of the sidenav */
     font-size: 16px; /* Increased text to enable scrolling */
@@ -162,12 +177,13 @@ body {
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
+    background-color: #f1f1f1;
+    margin: 0 auto;
+    padding: 50px;
+    padding-top: 80px;
     border: 1px solid #888;
-    width: 92%;
-    height: 86%;
+    width: 70%;
+    height: 70%;
 }
 
 /* The Close Button */

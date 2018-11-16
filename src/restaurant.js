@@ -5,12 +5,9 @@ class Restaurant {
     this.hours = data.hours;
     this.location = data.location;
     this.phone = data.phone;
-    // debugger
     this.meals = data.meals.map((m) => new Meal(m, this));
-    //this.meals = data.meals.map((meal) => new Meal(meal));
-    //this.meal = data.meals;
     Restaurant.all.push(this);
-  }
+  } // end Restaurant constructor fn
 
   static findById(id) {
     return this.all.find(restaurant => restaurant.id === id);
@@ -31,8 +28,7 @@ class Restaurant {
     </div>
     <br>
     `
-  }
-
+  } // end renderInfo fn
 } //end Restaurant class
 
 Restaurant.all = [];
